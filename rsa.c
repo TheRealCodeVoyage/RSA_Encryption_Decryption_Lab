@@ -74,7 +74,7 @@ void printBN(char *msg, BIGNUM *a)
         //Uncomment next 4 lines to Verify the signature of Alice using their Public Key
         //BN_hex2bn(&hash, "insert_hash_value_of_the_message_here");
         //BN_hex2bn(&signature, "signature_given_in_task_4");
-        //BN_mod_exp(m, sig, e, n, ctx);
+        //BN_mod_exp(m, signature, e, n, ctx);
         //printBN("Recovered hash from signature (in hex):", m);
 
         
