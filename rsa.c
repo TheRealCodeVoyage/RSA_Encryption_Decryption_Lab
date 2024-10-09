@@ -43,9 +43,9 @@ void printBN(char *msg, BIGNUM *a)
         //  enc = m ^ enc_key mod n
 
         //Uncomment next 3 lines and Initialize the encryption key based on the task
-        //enc_key = ;
-        //BN_mod_exp(enc,m,enc_key,n,ctx);
-        //printBN("Encrypted message = ", enc);
+        enc_key = ;
+        BN_mod_exp(enc,m,enc_key,n,ctx);
+        printBN("Encrypted message = ", enc);
     
         //  Decryption Formula:
         //  Decrypted Message = Encrypted Message ^ Decryption Key mod Modulus 
@@ -72,26 +72,32 @@ void printBN(char *msg, BIGNUM *a)
         //  m = signature ^ e mod n
 
         //Uncomment next 4 lines to Verify the signature of Alice using their Public Key
-        //BN_hex2bn(&hash, "insert_hash_value_of_the_message_here");
-        //BN_hex2bn(&signature, "signature_given_in_task_4");
-        //BN_mod_exp(m, signature, e, n, ctx);
-        //printBN("Recovered hash from signature (in hex):", m);
+        BN_hex2bn(&hash, "insert_hash_value_of_the_message_here");
+        BN_hex2bn(&signature, "signature_given_in_task_4");
+        BN_mod_exp(m, signature, e, n, ctx);
+        printBN("Recovered hash from signature (in hex):", m);
+        // To compare the recovered hash (m) with the expected hash
+        if (BN_cmp(m, hash) == 0) {
+            printf("Signature is verified.\n");
+        } else {
+            printf("Signature verification failed.\n");
+        }
 
         
         
         
         
         //  Free allocated memory
-        BN_free(d);
-        BN_free(m);
-        BN_free(e);
-        BN_free(n);
-        BN_free(enc);
-        BN_free(enc_key);
-        BN_free(dec);
-        BN_free(dec_key);
-        BN_free(hash);
-        BN_free(signature);
-        BN_CTX_free(ctx);
+        // BN_free(d);
+        // BN_free(m);
+        // BN_free(e);
+        // BN_free(n);
+        // BN_free(enc);
+        // BN_free(enc_key);
+        // BN_free(dec);
+        // BN_free(dec_key);
+        // BN_free(hash);
+        // BN_free(signature);
+        // BN_CTX_free(ctx);
         return 0;
     }
